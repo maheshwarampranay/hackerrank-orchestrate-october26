@@ -25,6 +25,45 @@ Our deletion-audit agent employs a modular, deterministic, and highly calibrated
 
 ---
 
+## Detailed Methodology & Investigation Approach
+
+### 1. Multi-Hop Identity Reconstruction
+Personal data often lingers under historical identifiers that were superseded prior to the deletion request. Our [`IdentityResolver`](code/identity.py) traverses both current identity snapshots (`user_identities.csv`) and timestamped change histories (`user_audit_log.csv`):
+- Recovers all past email addresses, phone numbers, and username aliases.
+- Calculates normalized SHA-256 hashes of every historical email address to uncover anonymized/hashed ghost records in security logs and analytics dumps.
+- Builds a unified identifier query set `{user_id, emails..., phones..., hashes...}` used to search across all evidence modalities.
+
+### 2. Multi-Tier Evidence Correlation & Ghost Data Detection
+Reported deletion statuses (`reported_status`) and activity logs are treated strictly as **claims**, not ground truth. Our [`EvidenceIndex`](code/evidence_index.py) actively verifies actual persistent state across five distinct evidence tiers:
+- **Relational & Replica Databases**: Executes SQLite snapshot captures (`.sql`), querying customer profiles, search indices, order tables, and replica stores. Parses nested JSON sub-documents (e.g., `document`, `profile`, `data`, `payload`) to uncover buried records.
+- **Application & Service Logs**: Implements dual-syntax regex parsers to decode both bracketed tokens (`[account_service] [tr-6074163]`) and key-value trace tokens (`trace_id=... service=...`), normalizing service aliases to canonical platform identifiers.
+- **Support & Communication Systems**: Inspects support conversation logs and ticketing systems for deletion marker tokens. For example, lines recording `marker_found=false rows=1` indicate replica desynchronization where message contents remain persisted.
+- **Multimodal Visual & Document Evidence**: Ingests multimodal artifacts (PDF dispute dossiers, compliance handovers, and UI console screenshots) via high-fidelity structured extractions, uncovering unredacted customer records in downstream channels.
+- **Temporal Cutoff Enforcement**: Strictly filters evidence by `captured_at <= audit_at`, ensuring decisions reflect the exact state at the audit timestamp without look-ahead bias. When multiple snapshots exist for a resource, the latest snapshot captured at or before `audit_at` is evaluated.
+
+### 3. Workflow Scoring & Deletion Verification
+In a distributed microservice environment, deletion requests trigger asynchronous workflows that can silently stall or desynchronize. The pipeline reconstructs candidate workflow traces from `system_activity.csv`:
+- Associates start events (`account_deletion_started`) with matching user identities.
+- Applies a temporal proximity and user-affinity scoring model (`score -= 200` penalty for unrelated user interventions) to eliminate cross-user race conditions on shared timestamps.
+- Correlates downstream service actions (`primary_deletion_completed`, `replica_sync_completed`, `search_index_purged`, `export_archive_deleted`) against the audited evidence.
+
+### 4. Policy Engine & Tombstone Management
+The pipeline dynamically evaluates data categories against [`deletion_rules.csv`](dataset/deletion_rules.csv):
+- **Destructive Deletion (`DELETE_RECORD`)**: Direct operational data (profiles, search records, marketing subscriptions) that must be completely expunged.
+- **Redaction & PII Stripping (`REDACT_RECORD`)**: Records where the underlying business entity remains, but personal direct identifiers (names, emails, phones, hashes) must be removed.
+- **Account Tombstones (`ACCOUNT_TOMBSTONE`)**: Preserves the stable internal `user_id` reference for database referential integrity, while strictly verifying that all direct identifiers (email, phone, hash) are stripped. Retaining any direct identifier inside a tombstone triggers a `REPORT_EXPOSED_PII` finding.
+- **Mandatory Retention (`VERIFY_RECORD_PRESENT`)**: Financial records, tax invoices, and legal dispute documents that must be legally retained are verified for presence rather than deleted.
+
+### 5. Dependency-Aware Remediation & Canonical Step Ordering
+For `INCOMPLETE` deletion cases, the agent designs an end-to-end safe remediation plan and verification protocol:
+- **Dependency Inversion**: Active sync data flows (`DISABLE_DATA_FLOW`) and unblocked backup restores (`BLOCK_RESTORE`) are always disabled before modifying data stores, preventing race conditions from recreating ghost data during remediation.
+- **Downstream First**: Downstream read replicas, cache tiers, and search indexes are queued for remediation alongside primary stores.
+- **Post-Remediation Verification**: Generates future verification steps proving the required end-state (`ABSENT`, `REDACTED`, `ANONYMIZED`, `DISABLED`, or `BLOCKED`). Future actions strictly use `evidence_id = ""` per protocol.
+- **Universal Sort Key**: All steps are deterministic and strictly sequenced according to the canonical sort key:
+  $$\text{sort\_key} = (\text{phase\_rank}, \text{op\_rank}, \text{system\_rank}, \text{system\_id}, \text{resource\_id})$$
+
+---
+
 ## Prerequisites & Installation
 
 - **Runtime**: Python 3.10 or higher.
