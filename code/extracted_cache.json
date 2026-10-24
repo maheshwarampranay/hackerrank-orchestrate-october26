@@ -1,0 +1,214 @@
+{
+  "images": {
+    "evidence/images/account_admin_console_20260926.png": {
+      "system_id": "account_service",
+      "file_id": "evidence_04",
+      "records": [
+        {
+          "resource_id": "account_5762",
+          "user_id": "user_11",
+          "name": "Haruka Sato",
+          "email": "haruka.s1838@zoho.com",
+          "phone": "+81 90 7610 2507",
+          "email_hash": null,
+          "status": "PRESENT",
+          "type": "USER_PROFILE",
+          "details": "Customer Operations portal shows active account_5762"
+        },
+        {
+          "resource_id": "support_9538",
+          "user_id": "user_11",
+          "name": "Haruka Sato",
+          "email": "haruka.s1838@zoho.com",
+          "phone": "+81 90 7610 2507",
+          "status": "PRESENT",
+          "type": "SUPPORT_MESSAGE",
+          "ticket_id": "CS-8538"
+        }
+      ]
+    },
+    "evidence/images/analytics_profile_view_20260713.png": {
+      "system_id": "analytics_platform",
+      "file_id": "evidence_19",
+      "records": [
+        {
+          "resource_id": "analytics_7438",
+          "user_id": "user_20",
+          "name": "Omar Darwish",
+          "email": "darwish.omar@icloud.com",
+          "phone": null,
+          "email_hash": null,
+          "status": "PRESENT",
+          "type": "ANALYTICS_PROFILE",
+          "details": "Pulse Analytics shows customer profile with exposed name and email"
+        }
+      ]
+    },
+    "evidence/images/backup_restore_console_20260429.png": {
+      "system_id": "backup_service",
+      "file_id": "evidence_34",
+      "records": [
+        {
+          "resource_id": "backup_9287",
+          "email": "areed1433@gmail.com",
+          "status": "ACTIVE",
+          "type": "BACKUP_ARCHIVE",
+          "details": "Vault Recovery Manager shows active weekly backup with restore allowed"
+        },
+        {
+          "resource_id": "backup_9291",
+          "email": "bluepeakco@outlook.com",
+          "status": "ACTIVE",
+          "type": "BACKUP_ARCHIVE"
+        }
+      ]
+    },
+    "evidence/images/connector_management_console_20260807.png": {
+      "system_id": "integration_service",
+      "file_id": "evidence_14",
+      "records": [
+        {
+          "resource_id": "data_flow_1121",
+          "email": "jain.aditi@gmail.com",
+          "destination": "customer_analytics_warehouse",
+          "status": "ACTIVE",
+          "type": "DATA_FLOW",
+          "details": "BridgeOps connector data_flow_1121 active/healthy continuous sync"
+        },
+        {
+          "resource_id": "data_flow_9846",
+          "email": "lucia-torres@gmail.com",
+          "destination": "customer_analytics_warehouse",
+          "status": "ACTIVE",
+          "type": "DATA_FLOW"
+        }
+      ]
+    },
+    "evidence/images/customer_export_console_20260618.png": {
+      "system_id": "export_service",
+      "file_id": "evidence_23",
+      "records": [
+        {
+          "resource_id": "export_1260",
+          "email": "ingrid.dahl@outlook.com",
+          "status": "PRESENT",
+          "type": "USER_EXPORT",
+          "details": "Customer Download Center shows ready export package"
+        }
+      ]
+    },
+    "evidence/images/deleted_account_reference_20260310.png": {
+      "system_id": "identity_service",
+      "file_id": "evidence_42",
+      "records": []
+    },
+    "evidence/images/marketing_profile_console.png": {
+      "system_id": "marketing_platform",
+      "file_id": "evidence_64",
+      "records": [
+        {
+          "resource_id": "marketing_001",
+          "name": "Soo-jin Park",
+          "email": "sj.park@naver.com",
+          "phone": "+82 10-5837-9451",
+          "status": "PRESENT",
+          "type": "MARKETING_PROFILE",
+          "details": "Audience Operations shows live marketing profile"
+        }
+      ]
+    },
+    "evidence/images/object_storage_browser_20260213.png": {
+      "system_id": "support_platform",
+      "file_id": "evidence_46",
+      "records": [
+        {
+          "resource_id": "support_attachment_delivery_19",
+          "filename": "delivery_confirmation_19.pdf",
+          "status": "PRESENT",
+          "type": "SUPPORT_ATTACHMENT"
+        },
+        {
+          "resource_id": "support_attachment_delivery_20",
+          "filename": "delivery_confirmation_20.pdf",
+          "status": "PRESENT",
+          "type": "SUPPORT_ATTACHMENT"
+        }
+      ]
+    },
+    "evidence/images/search_index_inspector_20260901.png": {
+      "system_id": "search_service",
+      "file_id": "evidence_09",
+      "records": [
+        {
+          "resource_id": "search_428",
+          "user_id": "user_13",
+          "name": "Gabriel Silva",
+          "email": "g.silva76@gmail.com",
+          "status": "PRESENT",
+          "type": "SEARCH_INDEX_ENTRY",
+          "details": "Search Console query email:g.silva76@gmail.com returned search_428"
+        }
+      ]
+    },
+    "evidence/images/security_audit_explorer_20260905.png": {
+      "system_id": "security_service",
+      "file_id": "evidence_48",
+      "records": [
+        {
+          "resource_id": "audit_record_003",
+          "user_id": "user_03",
+          "event_type": "account_closure_recorded",
+          "status": "PRESENT",
+          "type": "SECURITY_AUDIT_LOG",
+          "details": "Sentinel Account events shows valid signed audit_record_003"
+        },
+        {
+          "resource_id": "audit_record_002",
+          "user_id": "user_03",
+          "event_type": "session_revoked",
+          "status": "PRESENT",
+          "type": "SECURITY_AUDIT_LOG"
+        },
+        {
+          "resource_id": "audit_record_001",
+          "user_id": "user_03",
+          "event_type": "recovery_challenge_completed",
+          "status": "PRESENT",
+          "type": "SECURITY_AUDIT_LOG"
+        }
+      ]
+    },
+    "evidence/images/support_ticket_console_20260524.png": {
+      "system_id": "support_platform",
+      "file_id": "evidence_28",
+      "records": [
+        {
+          "resource_id": "support_1034",
+          "name": "Kofi Agyeman",
+          "email": "kagyeman8947@fastmail.com",
+          "status": "PRESENT",
+          "type": "SUPPORT_MESSAGE",
+          "details": "Helpline Console ticket CS-5034 has unredacted customer message and email"
+        }
+      ]
+    }
+  },
+  "documents": {
+    "evidence/documents/account_history_report_20260718.pdf": {
+      "file_name": "account_history_report_20260718.pdf",
+      "text": "NORTHSTAR SHOP - CUSTOMER STATEMENT\nStatement NST-2026-0718-1842\nCustomer and order\nRecord Customer Ingrid Dahl\nDetail user_18\nDetail ingrid.dahl@outlook.com\nDetail statement NST-2026-0718-1842\nDetail order ORD-20261260\nItem Smart desk lamp, SKU LAMP-SD-04, quantity 1, subtotal EUR 54.95, shipping EUR 4.99, tax\nEUR 11.99, total EUR 71.93\nRecord Payment Visa ending 4821\nDetail billing status paid\nDetail order date 08 Jul 2026\nDetail dispatched 10 Jul\nDetail delivered 14 Jul\nNORTHSTAR SHOP - CUSTOMER STATEMENT\nContinued - Order timeline and returns\nCharges and delivery\nDelivery address 24 Fjordgata, 7010 Trondheim, Norway\nTimeline order placed, payment authorised, warehouse packed, carrier collected, delivered"
+    },
+    "evidence/documents/delivery_correction_attachment.pdf": {
+      "file_name": "delivery_correction_attachment.pdf",
+      "text": "DELIVERY ADDRESS CORRECTION REQUEST\nSupport reference CS-4827 / support_001\nCustomer request\nRecord Northstar Shop Delivery Address Correction Request\nDetail reference CS-4827 / support_001\nDetail received 18 Jun 2026\nDetail Priya Raman\nDetail priya.raman@gmail.com\nDetail +91 98765 73142\nDetail order ORD-20264827\nDetail preferred contact SMS\nsubmitted 18 Jun 2026 10 24 UTC\nCustomer request change apartment number from 14B to 18B and call before delivery\nProduct Stainless steel water bottle, quantity 2\nDetail carrier SwiftShip\nDELIVERY ADDRESS CORRECTION REQUEST\nContinued - Attachment properties and upload history\nOrder and delivery details\nRecord file delivery_address_correction.pdf\nDetail 312 KB\nDetail ticket CS-4827\nDetail region ap-south\nDetail uploader customer\ncaptured 12 Sep 2026 07 30 UTC\nDetail checksum prefix c90a42"
+    },
+    "evidence/documents/legal_retention_register_20260529.pdf": {
+      "file_name": "legal_retention_register_20260529.pdf",
+      "text": "DISPUTED ORDERS AND TAX RECORDS REGISTER\nFinance Operations | May 2026\nRegister details\nRecord Register month May 2026\nDetail owner Finance Records\nDetail classification Internal\ngenerated 29 May 2026 08 00 UTC\nDetail For each row add invoice date, finance owner, retain-until date, and case/reference number\nDISPUTED ORDERS AND TAX RECORDS REGISTER\nContinued - Review and custody notes\nDisputed order entries\n1 ORD-20264118 | user_08 | Card dispute | 04 May 2026 | USD 184.20 | Retain until 04 May 2033 | AR\n2 ORD-20264207 | user_12 | Tax correction | 09 May 2026 | EUR 72.40 | Retain until 09 May 2033 | ML\n3 ORD-20264319 | user_17 | Chargeback | 14 May 2026 | GBP 219.00 | Retain until 14 May 2033 | SK\n4 ORD-20264402 | user_21 | Invoice inquiry | 18 May 2026 | CAD 96.55 | Retain until 18 May 2033 | AR\n5 ORD-20264511 | user_24 | Card dispute | 23 May 2026 | AUD 311.80 | Retain until 23 May 2033 | ML\n6 ORD-20264600 | user_29 | Tax record | 28 May 2026 | USD 48.75 | Retain until 28 May 2033 | SK"
+    },
+    "evidence/documents/security_retention_extract.pdf": {
+      "file_name": "security_retention_extract.pdf",
+      "text": "COMPLIANCE JOURNAL - SIGNED RECORD EXTRACT\nReference CJX-20260905-0630\nJournal entry\nRecord Product Northstar Shop Compliance Journal\nDetail classification Internal Restricted\nDetail reference CJX-20260905-0630\nissued 05 Sep 2026 06 30 UTC\nRecord Event reference audit_record_003\nDetail subject reference user_03\nDetail event Account closure recorded\nDetail actor automated account workflow\nrecorded 25 Aug 2026 04 03 UTC\nretain until 25 Aug 2027 04 03 UTC\nRecord Journal partition 2026-Q3\nDetail record version 1\nDetail storage class compliance-ledger\nDetail integrity seal valid\nDetail short fingerprint 8f0c\u202631ad"
+    }
+  }
+}
